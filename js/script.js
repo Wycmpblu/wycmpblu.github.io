@@ -12,7 +12,7 @@ function isMobileDevice() {
     }
 } */
 
-const basePath = window.location.pathname.includes('/mobile/') ? '../' : './';
+const basePath = window.location.pathname.includes('/') ? '../' : './';
 
 const categories = {
     face: [
