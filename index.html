@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конфигуратор сетов</title>
+    <link rel="icon" type="image/x-icon" href="./imgs/icon.png">
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- <div style="position: absolute;" class="fan-content">
+        <img src="./imgs/icon.png">
+        <div>
+            Фан-контент. Данный сайт не принадлежит компании Arizona Games.
+            Сайт сделан для фанатов, для удобного подбора аксессуаров.
+        </div>
+    </div> -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <h2>Выберите аксессуар на который совершить перенос</h2>
+            <div class="modal-accs"></div>
+            <button id="closeModal">Без переноса</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="left-section">
+            <div class="characters" ru-name="Скин">
+                <div style="cursor: pointer; position: relative;" id="characters">
+                    <img src="./imgs/characters/template.png" alt="characters" style="width: 20vw" id="character-image">
+                    <span class="grid-text"></span>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="info">
+                    <span class="highlight white">Защита: <span class="highlight" id="deff">[-0%
+                            урона]</span></span><br>
+                    <span class="highlight white">Регенерация: <span class="highlight" id="hpmin">[0 HP в
+                            мин.]</span></span><br>
+                    <span class="highlight white">Урон: <span class="highlight" id="damage">[+0 урона]</span></span><br>
+                    <span class="highlight white">Удача: <span class="highlight" id="krit">[шанс 0%
+                            крит.урона]</span></span><br>
+                    <span class="highlight white">Макс. HP: <span class="highlight" id="hpmax">[+0 макс.
+                            HP]</span></span><br>
+                    <span class="highlight white">Макс. Брони: <span class="highlight" id="armourmax">[+0 макс.
+                            Брони]</span></span><br>
+                    <span class="highlight white">Шанс оглушения: <span class="highlight"
+                            id="oglysh">[+0%]</span></span><br>
+                    <span class="highlight white">Шанс опьянения: <span class="highlight"
+                            id="opyan">[+0%]</span></span><br>
+                    <span class="highlight white">Шанс избежать оглушения: <span class="highlight"
+                            id="neoglysh">[+0%]</span></span><br>
+                    <span class="highlight white">Отражение урона: <span class="highlight"
+                            id="otrazh">[-0%]</span></span>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="grid-item" id="head" ru-name="Аксессуар на голову">
+                    <div class="grid-text">
+                        <button class="btn nashivka">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="grid-item" id="face" ru-name="Аксессуар на лицо">
+                    <div class="grid-text">
+                        <button class="btn nashivka">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="grid-item" id="hand" ru-name="Аксессуар в руку">
+                    <div class="grid-text">
+                        <button class="btn nashivka">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="grid-item" id="breast" ru-name="Аксессуар на грудь">
+                    <div class="grid-text">
+                        <button class="btn nashivka">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="grid-item" id="shoulder" ru-name="Аксессуар на плечо">
+                    <div class="grid-text">
+                        <button class="btn nashivka">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="grid-item" id="spine" ru-name="Аксессуар на спину">
+                    <div class="grid-text">
+                        <button class="btn nashivka">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+            </div>
+
+            <div class="bottom-row">
+                <!-- <div class="grid-item" id="characters" ru-name="Скин">
+                    <span class="grid-text"></span>
+                    <div class="tooltip"></div>
+                </div> -->
+                <div class="grid-item" id="armour" ru-name="Бронежилет">
+                    <div class="grid-text">
+                        <button class="btn nashivkabronik">N</button>
+                        <span class="">+13</span>
+                        <button class="btn minus">-</button>
+                        <button class="btn plus">+</button>
+                    </div>
+                    <div class="tooltip"></div>
+                </div>
+                <div class="grid-item" id="case" ru-name="Чемодан">
+                    <span class="grid-text"></span>
+                    <div class="tooltip"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trash">
+            <div class="tooltip" id="trashtooltip">Перетащите сюда предмет, чтобы его выкинуть!</div>
+        </div>
+
+        <div class="right-section">
+            <div class="mini-container" slot-name="head">
+            </div>
+            <div class="mini-container" slot-name="face">
+            </div>
+            <div class="mini-container" slot-name="hand">
+            </div>
+            <div class="mini-container" slot-name="breast">
+            </div>
+            <div class="mini-container" slot-name="shoulder">
+            </div>
+            <div class="mini-container" slot-name="spine">
+            </div>
+            <div class="mini-container" slot-name="armour">
+            </div>
+            <div class="mini-container" slot-name="case">
+            </div>
+            <div class="mini-container" slot-name="characters">
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
