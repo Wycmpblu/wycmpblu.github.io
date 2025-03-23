@@ -47,14 +47,6 @@ body {
     padding: 20px;
 }
 
-.character {
-    display: flex;
-    flex-direction: row;
-    text-align: left;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
 #character-image {
     pointer-events: none;
 }
