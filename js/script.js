@@ -2,7 +2,7 @@ function isMobileDevice() {
     return /Mobi|Android/i.test(navigator.userAgent);
 }
 
-/* if (isMobileDevice()) {
+if (isMobileDevice()) {
     if (!window.location.pathname.includes('/mobile')) {
         window.location.href = '/mobile';
     }
@@ -10,9 +10,9 @@ function isMobileDevice() {
     if (window.location.pathname.includes('/mobile')) {
         window.location.href = '/';
     }
-} */
+}
 
-const basePath = window.location.pathname.includes('/') ? '../' : './';
+const basePath = window.location.pathname.includes('/mobile/') ? '../' : './';
 
 const categories = {
     face: [

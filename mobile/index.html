@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сетики</title>
-    <script src="./js/jquery-3.7.1.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>[M] Конфигуратор сетов</title>
+    <link rel="icon" type="image/x-icon" href="../imgs/icon.png">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/m-style.css">
 </head>
 
 <body>
+    <div style="position: absolute;" class="fan-content">
+        <img src="../imgs/icon.png">
+    </div>
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <h2>Выберите аксессуар на который совершить перенос</h2>
@@ -17,12 +21,19 @@
             <button id="closeModal">Без переноса</button>
         </div>
     </div>
+    <div class="modal-overlay" id="modalDelete">
+        <div class="modal">
+            <h2>Вы уверены что хотите удалить аксессуар из слота [SLOT_NAME]?</h2>
+            <button id="yesDelete">Да</button>
+            <button id="noDelete">Нет</button>
+        </div>
+    </div>
     <div class="container">
         <div class="left-section">
-            <div class="stats">
-                <div class="grid-item" id="characters" ru-name="Скин" style="background-color: rgba(0, 0, 0, 0);">
-                    <span class="grid-text"></span>
-                    <div class="tooltip"></div>
+            <div class="character">
+                <div style="cursor: pointer; position: relative;" id="character">
+                    <img src="../imgs/characters/template.png" alt="Character" style="width: 35vw" id="character-image">
+                    <!-- <div class="tooltip" style="bottom: 101%;">Нажмите чтобы сменить персонажа</div> -->
                 </div>
                 <div class="info">
                     <span class="highlight white">Защита: <span class="highlight" id="deff">[-0%
@@ -46,7 +57,6 @@
                             id="otrazh">[-0%]</span></span>
                 </div>
             </div>
-
             <div class="grid">
                 <div class="grid-item" id="head" ru-name="Аксессуар на голову">
                     <div class="grid-text">
@@ -118,37 +128,42 @@
                     <span class="grid-text"></span>
                     <div class="tooltip"></div>
                 </div>
-
             </div>
         </div>
 
-        <div class="trash">
+        <!-- <div class="trash">
             <div class="tooltip" id="trashtooltip">Перетащите сюда предмет, чтобы его выкинуть!</div>
-        </div>
+        </div> -->
 
         <div class="right-section">
-            <!-- <span class="category">Скин</span> -->
-            <div class="mini-container" slot-name="characters"></div>
-            <!-- <span class="category">Голова</span> -->
-            <div class="mini-container" slot-name="head"></div>
-            <!-- <span class="category">Лицо</span> -->
-            <div class="mini-container" slot-name="face"></div>
-            <!-- <span class="category">Рука</span> -->
-            <div class="mini-container" slot-name="hand"></div>
-            <!-- <span class="category">Грудь</span> -->
-            <div class="mini-container" slot-name="breast"></div>
-            <!-- <span class="category">Плечо</span> -->
-            <div class="mini-container" slot-name="shoulder"></div>
-            <!-- <span class="category">Спина</span> -->
-            <div class="mini-container" slot-name="spine"></div>
-            <!-- <span class="category">Бронежилет</span> -->
-            <div class="mini-container" slot-name="armour"></div>
-            <!-- <span class="category">Чемодан</span> -->
-            <div class="mini-container" slot-name="case"></div>
+            <div class="mini-container" slot-name="head">
+            </div>
+            <div class="mini-container" slot-name="face">
+            </div>
+            <div class="mini-container" slot-name="hand">
+            </div>
+            <div class="mini-container" slot-name="breast">
+            </div>
+            <div class="mini-container" slot-name="shoulder">
+            </div>
+            <div class="mini-container" slot-name="spine">
+            </div>
+            <div class="mini-container" slot-name="armour">
+            </div>
+            <div class="mini-container" slot-name="case">
+            </div>
         </div>
+
+        <div class="fan-content">
+            <div>
+                Фан-контент. Данный сайт не принадлежит компании Arizona Games.
+                Сайт сделан для фанатов, для удобного подбора аксессуаров.
+            </div>
+        </div>
+        <span class="copyright">© plalkeo, 2025</span>
     </div>
 
-    <script src="./js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
