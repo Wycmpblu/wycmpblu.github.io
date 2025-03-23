@@ -69,7 +69,7 @@ body {
 
 .grid-item {
     border-radius: 5px;
-    border: #333333 1px solid;
+    border: rgba(255, 255, 255, 0.2) 1px solid;
     width: 25vw;
     height: 25vw;
     background-color: #333333;
