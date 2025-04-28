@@ -345,7 +345,12 @@ function showPereshiv(slot) {
             ]
             break;
         case 'breast':
-            items = []
+            items = [
+                {
+                    name: 'illuminate',
+                    yellow: { deff: 1, damage: 1 }
+                }
+            ]
             break;
         case 'shoulder':
             items = [
