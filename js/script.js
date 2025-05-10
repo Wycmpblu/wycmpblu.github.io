@@ -594,6 +594,24 @@ function updateStats() {
                             stats.armourmax += 9;
                             stats.hpmax += 4;
                         }
+                        if (zatochka == 14) {
+                            if (stats.hpmax == undefined) {
+                                stats.hpmax = 0;
+                            }
+                            if (stats.otrazh == undefined) {
+                                stats.otrazh = 0;
+                            }
+                            if (stats.armourmax == undefined) {
+                                stats.armourmax = 0;
+                            }
+                            if (stats.hpmin == undefined) {
+                                stats.hpmin = 0;
+                            }
+                            stats.otrazh += 1;
+                            stats.armourmax += 14;
+                            stats.hpmin += 3;
+                            stats.hpmax += 4;
+                        }
                     }
                 }
             }
@@ -898,7 +916,7 @@ $(document).ready(function () {
 
         let span = $(this).closest('.grid-text').find('span');
         let currentValue = parseInt(span.text().replace('+', ''));
-        if (currentValue < 13) {
+        if (currentValue < 14) {
             span.text(`+${currentValue + 1}`);
             updateStats();
         }
