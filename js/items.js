@@ -19,6 +19,12 @@ const categories = {
          stats: { deff: 0, oglysh: 3 },
          upg: 'deff',
          yellow: {}
+      },
+      {
+         imageSrc: `${basePath}imgs/face/sphereOnHead.png`,
+         stats: { deff: 2, damage: 2, krit: 2 },
+         upg: 'deff',
+         yellow: {}
       }
    ],
    shoulder: [
@@ -96,6 +102,12 @@ const categories = {
       },
       {
          imageSrc: `${basePath}imgs/hand/fraps.png`,
+         stats: { deff: 2, damage: 2, krit: 2 },
+         upg: 'damage',
+         yellow: {}
+      },
+      {
+         imageSrc: `${basePath}imgs/hand/azzinoth.png`,
          stats: { deff: 2, damage: 2, krit: 2 },
          upg: 'damage',
          yellow: {}

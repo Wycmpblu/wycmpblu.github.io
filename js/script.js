@@ -17,7 +17,6 @@ if (isMobileDevice()) {
     }
 }
 
-
 var RuTypes = {
     deff: 'Защита',
     hpmin: 'HP в мин.',
@@ -149,7 +148,7 @@ function updateStats() {
                 } else {
                     if (zatochka >= 4) {
                         stats[type] += (zatochka - 3) * upgrader;
-                        if (zatochka == 13) {
+                        if (zatochka >= 13) {
                             if (stats.armourmax == undefined) {
                                 stats.armourmax = 0;
                             }
@@ -160,22 +159,15 @@ function updateStats() {
                             stats.hpmax += 4;
                         }
                         if (zatochka == 14) {
-                            if (stats.hpmax == undefined) {
-                                stats.hpmax = 0;
-                            }
                             if (stats.otrazh == undefined) {
-                                stats.otrazh = 0;
-                            }
-                            if (stats.armourmax == undefined) {
-                                stats.armourmax = 0;
+                                stats.otrazh = 0
                             }
                             if (stats.hpmin == undefined) {
-                                stats.hpmin = 0;
+                                stats.hpmin = 0
                             }
-                            stats.otrazh += 1;
-                            stats.armourmax += 14;
+                            stats.armourmax += 5;
                             stats.hpmin += 3;
-                            stats.hpmax += 4;
+                            stats.otrazh += 1;
                         }
                     }
                 }
