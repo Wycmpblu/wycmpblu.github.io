@@ -211,12 +211,6 @@ const categories = {
          yellow: { damage: 2, hpmax: 5, oglysh: 5 }
       },
       {
-         imageSrc: `${basePath}imgs/characters/homelander.png`,
-         stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
-         upg: 'hpmin',
-         yellow: { damage: 2, deff: 2, otrazh: 3 }
-      },
-      {
          imageSrc: `${basePath}imgs/characters/ct.png`,
          stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
          upg: 'hpmin',
@@ -227,6 +221,12 @@ const categories = {
          stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
          upg: 'hpmin',
          yellow: {}
+      },
+      {
+         imageSrc: `${basePath}imgs/characters/gribi1.png`,
+         stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
+         upg: 'hpmin',
+         yellow: { damage: 2, hpmax: 5, oglysh: 5 }
       }
    ]
 };
