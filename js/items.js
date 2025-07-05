@@ -1,7 +1,7 @@
 const basePath = window.location.pathname.includes('/mobile/') ? '../' : './';
 
 const categories = {
-   face: [
+   face: [                 // Лицо
       {
          imageSrc: `${basePath}imgs/face/netri.png`,
          stats: { deff: 2, krit: 25 },
@@ -25,9 +25,15 @@ const categories = {
          stats: { deff: 2, damage: 2, krit: 2 },
          upg: 'deff',
          yellow: {}
+      },
+      {
+         imageSrc: `${basePath}imgs/face/respirator.png`,
+         stats: { deff: 0 },
+         upg: 'deff',
+         yellow: { deff: 1, damage: 1 }
       }
    ],
-   shoulder: [
+   shoulder: [             // Плечо
       {
          imageSrc: `${basePath}imgs/shoulder/magshar2.png`,
          stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
@@ -53,7 +59,7 @@ const categories = {
          yellow: {}
       }
    ],
-   case: [
+   case: [                 // Чемодан
       {
          imageSrc: `${basePath}imgs/case/enegrochem.png`,
          stats: { damage: 3, oglysh: 13, neoglysh: 4 },
@@ -67,7 +73,7 @@ const categories = {
          yellow: {}
       }
    ],
-   armour: [
+   armour: [               // Бронежилет
       {
          imageSrc: `${basePath}imgs/armour/bronik.png`,
          stats: { deff: 2, krit: 1, armourmax: 0 },
@@ -81,7 +87,7 @@ const categories = {
          yellow: {}
       }
    ],
-   hand: [
+   hand: [                 // Рука
       {
          imageSrc: `${basePath}imgs/hand/duff.png`,
          stats: { damage: 4 },
@@ -113,7 +119,7 @@ const categories = {
          yellow: {}
       }
    ],
-   head: [
+   head: [                 // Голова
       {
          imageSrc: `${basePath}imgs/head/deadinside.png`,
          stats: { damage: 1, krit: 10, oglysh: 1 },
@@ -157,7 +163,7 @@ const categories = {
          yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
       },
    ],
-   spine: [
+   spine: [                // Спина
       {
          imageSrc: `${basePath}imgs/spine/tor.png`,
          stats: { damage: 4 },
@@ -183,7 +189,7 @@ const categories = {
          yellow: {}
       }
    ],
-   breast: [
+   breast: [               // Грудь
       {
          imageSrc: `${basePath}imgs/breast/mahi.png`,
          stats: { deff: 2, damage: 1, krit: 10, armourmax: 25 },
@@ -203,7 +209,7 @@ const categories = {
          yellow: { damage: 2, hpmax: 5 }
       }
    ],
-   characters: [
+   characters: [           // Скин
       {
          imageSrc: `${basePath}imgs/characters/rilay.png`,
          stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
