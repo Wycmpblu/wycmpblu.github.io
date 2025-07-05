@@ -146,7 +146,7 @@ const categories = {
       },
       {
          imageSrc: `${basePath}imgs/head/tikva.png`,
-         stats: { deff: 2, damage: 2, krit: 2 },
+         stats: { deff: 2, damage: 2, krit: 2, hpmin: 0 },
          upg: 'hpmin',
          yellow: {}
       },
