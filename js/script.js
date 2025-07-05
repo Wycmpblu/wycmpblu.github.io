@@ -230,13 +230,22 @@ gridItems.forEach(item => {
 
     tooltip.innerHTML = ruName;
 
-    item.addEventListener('mouseover', () => {
-        tooltip.style.display = 'block';
-    });
+    if (!isMobileDevice()) {
+        item.addEventListener('mouseenter', () => {
+            tooltip.style.display = 'block';
+            // Сбрасываем анимацию
+            tooltip.style.animation = 'none';
+            void tooltip.offsetWidth; // Trigger reflow
+            tooltip.style.animation = 'fadeIn 0.7s ease-out forwards';
+        });
 
-    item.addEventListener('mouseout', () => {
-        tooltip.style.display = 'none';
-    });
+        item.addEventListener('mouseleave', () => {
+            tooltip.style.animation = 'fadeOut 0.7s ease-out forwards';
+            setTimeout(() => {
+                tooltip.style.display = 'none';
+            }, 300);
+        });
+    }
 });
 
 
@@ -500,6 +509,12 @@ $(document).ready(function () {
         }
 
         var $gridItem = $(this).closest('.grid-item');
+        var $tooltip = $gridItem.find('.tooltip');
+
+        // Скрываем тултип с анимацией
+        $tooltip.addClass('fade-out');
+        setTimeout(() => $tooltip.hide().removeClass('fade-out'), 300);
+
         var $buttonContainer = $('<div class="button-container"></div>');
         var buttons = [
             { text: 'ДЕФФ', type: 'deff', value: 6 },
@@ -507,53 +522,74 @@ $(document).ready(function () {
             { text: 'КРИТ', type: 'krit', value: 3 },
             { text: 'ОТРАЖЕНИЕ', type: 'otrazh', value: 3 }
         ];
+
         buttons.forEach(function (button) {
             var $button = $('<button class="btn">' + button.text + '</button>');
             $button.on('click', function (e) {
                 if (isMobileDevice()) {
                     e.stopPropagation();
                 }
-                var item = $gridItem.find('img.main')[0]
-                var tooltip = $gridItem.find('.tooltip')[0]
-                $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
+                var item = $gridItem.find('img.main')[0];
+
                 if (item != undefined) {
-                    item.dataset.nashivka = `{"${button.type}": ${button.value}}`
+                    item.dataset.nashivka = `{"${button.type}": ${button.value}}`;
                     if (item.dataset.nashivka != undefined) {
                         var nashivkaType = button.type;
                         var ruName = RuTypes[nashivkaType];
-
+                        $tooltip.html($gridItem.attr('ru-name'));
                         if (ruName) {
-                            tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: ${ruName}`;
+                            $tooltip.html(`${$tooltip.html()}<br>Нашивка: ${ruName}`);
                         }
                     }
-                    updateStats()
+                    updateStats();
                 }
                 $buttonContainer.remove();
+
+                // На мобильных устройствах показываем тултип с анимацией
+                if (isMobileDevice()) {
+                    $tooltip.show();
+                    setTimeout(() => {
+                        $tooltip.addClass('fade-out');
+                        setTimeout(() => $tooltip.hide().removeClass('fade-out'), 300);
+                    }, 700);
+                }
             });
             $buttonContainer.append($button);
         });
 
-
         $gridItem.append($buttonContainer);
     });
 
-
+    // Аналогично для броника
     $('.btn.nashivkabronik').on('click', function (e) {
         if (isMobileDevice()) {
             e.stopPropagation();
         }
 
         var $gridItem = $(this).closest('.grid-item');
-        var item = $gridItem.find('img.main')[0]
-        var tooltip = $gridItem.find('.tooltip')[0]
-        $($gridItem).find('.tooltip').text($($gridItem).attr('ru-name'))
-        if (item != undefined) {
-            item.dataset.nashivka = `{"neoglysh": 20}`
+        var item = $gridItem.find('img.main')[0];
+        var $tooltip = $gridItem.find('.tooltip');
 
+        // Скрываем тултип с анимацией
+        $tooltip.addClass('fade-out');
+        setTimeout(() => $tooltip.hide().removeClass('fade-out'), 300);
+
+        if (item != undefined) {
+            item.dataset.nashivka = `{"neoglysh": 20}`;
             if (item.dataset.nashivka != undefined) {
-                tooltip.innerHTML = `${tooltip.innerHTML}<br>Нашивка: Есть`;
+                $tooltip.html($gridItem.attr('ru-name'));
+                $tooltip.html(`${$tooltip.html()}<br>Нашивка: Есть`);
             }
-            updateStats()
+            updateStats();
+        }
+
+        // На мобильных устройствах показываем тултип с анимацией
+        if (isMobileDevice()) {
+            $tooltip.show();
+            setTimeout(() => {
+                $tooltip.addClass('fade-out');
+                setTimeout(() => $tooltip.hide().removeClass('fade-out'), 300);
+            }, 700);
         }
     });
 

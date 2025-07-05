@@ -409,3 +409,17 @@ body {
         font-size: 10px;
     }
 }
+
+/* Для десктопов */
+@media (hover: hover) {
+    .tooltip {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    .grid-item:hover .tooltip {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
