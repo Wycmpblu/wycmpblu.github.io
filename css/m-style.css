@@ -55,11 +55,25 @@ body {
     margin-bottom: 20px;
 }
 
-#character-image {
-    pointer-events: none;
+#characters {
+    height: 200px;
+    margin-right: 15px;
+    margin-left: -15px;
+    background-color: #00000000;
+    border: #00000000;
 }
 
+#characters img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* или contain, fill, scale-down */
+}
 
+.left-section .character .grid-text {
+    padding: 0;
+    position: absolute;
+}
 
 .grid {
     display: grid;
@@ -116,6 +130,7 @@ body {
     font-size: 12px;
     font-weight: bold;
     white-space: nowrap;
+    padding: 0;
 }
 
 .btn {
