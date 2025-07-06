@@ -186,24 +186,11 @@ body {
     gap: 10px;
 }
 
-.mini-container {
-    width: 95%;
-    height: 10vh;
-    background-color: #333333;
-    display: flex;
-    justify-content: flex-start;
-    /* Изменено для горизонтальной прокрутки */
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 14px;
-    padding-left: 10px;
-    font-weight: bold;
+.right-section .mini-container {
     overflow-x: auto;
-    /* Добавлено для горизонтальной прокрутки */
-    white-space: nowrap;
-    /* Предотвращает перенос строк */
-    border-radius: 5px;
 }
+
+
 
 .info span {
     font-size: 0.8em;
@@ -279,13 +266,33 @@ body {
     display: block;
 }
 
+.mini-container {
+    width: 95%;
+    height: 10vh;
+    background-color: #333333;
+    display: flex;
+    justify-content: flex-start;
+    /* Изменено для горизонтальной прокрутки */
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+    /* Добавлено для горизонтальной прокрутки */
+    white-space: nowrap;
+    /* Предотвращает перенос строк */
+    border-radius: 5px;
+    overflow-y: hidden;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
 .mini-container img {
-    width: 20%;
+    background-color: #7979797e;
+    margin: 1px;
+    border-radius: 5px;
+    width: 3rem;
     cursor: pointer;
-    display: inline-block;
-    /* Элементы внутри контейнера */
-    margin-right: 10px;
-    /* Отступ между элементами */
+    object-fit: contain;
 }
 
 .modal-overlay {
