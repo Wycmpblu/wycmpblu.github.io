@@ -244,6 +244,20 @@ body {
     cursor: pointer;
 }
 
+.item-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.411);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 100;
+    pointer-events: none;
+    transform: translateY(-30%);
+    margin-top: -10px;
+    display: none;
+    white-space: nowrap;
+}
 
 .tooltip {
     position: absolute;
