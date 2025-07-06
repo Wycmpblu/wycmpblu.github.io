@@ -162,6 +162,18 @@ const categories = {
          upg: 'hpmin',
          yellow: { deff: 2, damage: 1, krit: 1, hpmax: 10 }
       },
+      {
+         imageSrc: `${basePath}imgs/head/bk.png`,
+         stats: { krit: 10 },
+         upg: 'krit',
+         yellow: {}
+      },
+      {
+         imageSrc: `${basePath}imgs/head/endercube.png`,
+         stats: { krit: 10, damage: 1, oglysh: 1 },
+         upg: 'krit',
+         yellow: {}
+      }
    ],
    spine: [                // Спина
       {
