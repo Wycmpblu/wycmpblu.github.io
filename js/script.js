@@ -59,35 +59,45 @@ class ItemPlacer {
         return match ? match[1] : null;
     }
 
-    createItemElement(imageSrc, stats, upg, yellow) {
+    createItemElement(imageSrc, stats, upg, yellow, name) {
+        // Главный контейнер
+        const container = document.createElement('div');
+        container.className = 'item-container';
 
+        // Изображение предмета
         const img = document.createElement('img');
         img.src = imageSrc;
         img.draggable = true;
-        img.className = 'main'
+        img.className = 'main';
         img.setAttribute('data-stats', JSON.stringify(stats));
         img.setAttribute('data-upg', upg);
         img.setAttribute('data-yellow', JSON.stringify(yellow));
+        img.setAttribute('data-name', name);
 
-        return img;
+        // Тултип с названием
+        const tooltip = document.createElement('div');
+        tooltip.className = 'item-tooltip';
+        tooltip.textContent = name;
+
+        container.appendChild(img);
+        container.appendChild(tooltip);
+
+        return container;
     }
 
-    placeItem(imageSrc, stats, upg, yellow) {
-
+    placeItem(imageSrc, stats, upg, yellow, name) {
         const slotName = this.getSlotNameFromSrc(imageSrc);
         if (!slotName) {
             return;
         }
-
 
         const container = Array.from(this.containers).find(
             (el) => el.getAttribute('slot-name') === slotName
         );
 
         if (container) {
-
-            const img = this.createItemElement(imageSrc, stats, upg, yellow);
-            container.appendChild(img);
+            const itemContainer = this.createItemElement(imageSrc, stats, upg, yellow, name);
+            container.appendChild(itemContainer);
         }
     }
 }
@@ -98,7 +108,7 @@ console.log('Categories loaded:', categories);
 
 Object.entries(categories).forEach(([category, items]) => {
     items.forEach(item => {
-        placer.placeItem(item.imageSrc, item.stats, item.upg, item.yellow);
+        placer.placeItem(item.imageSrc, item.stats, item.upg, item.yellow, item.name);
     });
 });
 
@@ -249,11 +259,11 @@ gridItems.forEach(item => {
 });
 
 
-document.querySelectorAll('.mini-container img').forEach(img => {
+document.querySelectorAll('.mini-container .main').forEach(img => {
     if (!isMobileDevice()) {
         img.setAttribute('draggable', true);
         img.addEventListener('dragstart', (e) => {
-            e.dataTransfer.setData('slot-name', img.parentElement.getAttribute('slot-name'));
+            e.dataTransfer.setData('slot-name', img.parentElement.parentElement.getAttribute('slot-name'));
             e.dataTransfer.setData('img-html', img.outerHTML);
             img.classList.add('dragging');
         });
@@ -263,10 +273,9 @@ document.querySelectorAll('.mini-container img').forEach(img => {
         });
     } else {
         img.addEventListener('click', function () {
-            addAccs(img.parentElement.getAttribute('slot-name'), img.outerHTML)
+            addAccs(img.parentElement.parentElement.getAttribute('slot-name'), img.outerHTML)
         })
     }
-
 });
 
 var current_item;
@@ -282,22 +291,21 @@ function addAccs(slot_name, imgHtml) {
             if (imgElement) {
                 const existingImg = item.querySelector('img.main');
                 if (existingImg) {
-                    existingImg.outerHTML = imgHtml;
-                    $(item).find('img.default-accs').remove();
+                    existingImg.replaceWith(imgElement); // Заменяем весь элемент
                 } else {
-                    item.appendChild(imgElement);
+                    item.querySelector('.grid-text').after(imgElement);
                 }
-                current_item = $(item).find('img')[0]
-                current_item.className = 'main'
-                $(item).find('.tooltip').text($(item).attr('ru-name'))
-                const slot = getSlotNameFromItem(current_item)
-                showPereshiv(slot)
+                current_item = item.querySelector('img.main');
+                current_item.className = 'main';
+                $(item).find('.tooltip').text($(item).attr('ru-name'));
+                const slot = getSlotNameFromItem(current_item);
+                showPereshiv(slot);
             }
         }
         updateStats();
     }
 
-    const img = item.querySelector('img');
+    const img = item.querySelector('img.main');
     if (img) {
         img.addEventListener('dragstart', (e) => {
             e.dataTransfer.setData('img-html', img.outerHTML);
