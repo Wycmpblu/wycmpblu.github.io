@@ -67,7 +67,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* ��� contain, fill, scale-down */
+    /* пїЅпїЅпїЅ contain, fill, scale-down */
 }
 
 .left-section .character .grid-text {
@@ -272,14 +272,14 @@ body {
     background-color: #333333;
     display: flex;
     justify-content: flex-start;
-    /* Изменено для горизонтальной прокрутки */
+    /* Р�Р·РјРµРЅРµРЅРѕ РґР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРё */
     align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 14px;
     font-weight: bold;
-    /* Добавлено для горизонтальной прокрутки */
+    /* Р”РѕР±Р°РІР»РµРЅРѕ РґР»СЏ РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРё */
     white-space: nowrap;
-    /* Предотвращает перенос строк */
+    /* РџСЂРµРґРѕС‚РІСЂР°С‰Р°РµС‚ РїРµСЂРµРЅРѕСЃ СЃС‚СЂРѕРє */
     border-radius: 5px;
     overflow-y: hidden;
     padding-top: 3px;
@@ -289,29 +289,11 @@ body {
 .mini-container img {
     background-color: #7979797e;
     margin: 1px;
+    width: 17vw;
     border-radius: 5px;
-    width: 5rem;
     height: fit-content;
     cursor: pointer;
     object-fit: contain;
-}
-
-/* @media (max-width: 320px) {
-    .mini-container img {
-        
-    }
-} */
-
-@media (max-width: 768px) {
-    .mini-container img {
-        width: 3rem;
-    }
-}
-
-@media (max-width: 425px) {
-    .mini-container img {
-        width: 3rem;
-    }
 }
 
 .modal-overlay {
@@ -369,9 +351,9 @@ body {
     text-align: center;
 }
 
-/* Добавьте эти стили в ваш CSS файл */
+/* Р”РѕР±Р°РІСЊС‚Рµ СЌС‚Рё СЃС‚РёР»Рё РІ РІР°С€ CSS С„Р°Р№Р» */
 
-/* Анимация появления */
+/* РђРЅРёРјР°С†РёСЏ РїРѕСЏРІР»РµРЅРёСЏ */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -384,7 +366,7 @@ body {
     }
 }
 
-/* Анимация исчезновения */
+/* РђРЅРёРјР°С†РёСЏ РёСЃС‡РµР·РЅРѕРІРµРЅРёСЏ */
 @keyframes fadeOut {
     from {
         opacity: 1;
@@ -397,7 +379,7 @@ body {
     }
 }
 
-/* Для мобильных устройств */
+/* Р”Р»СЏ РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІ */
 @media (hover: none) {
     .tooltip {
         display: none;
