@@ -296,9 +296,21 @@ body {
     object-fit: contain;
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 320px) {
     .mini-container img {
-        width: 4rem;
+        
+    }
+} */
+
+@media (max-width: 768px) {
+    .mini-container img {
+        width: 3rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .mini-container img {
+        width: 3rem;
     }
 }
 
