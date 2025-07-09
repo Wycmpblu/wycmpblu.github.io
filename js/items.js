@@ -264,6 +264,13 @@ const categories = {
          yellow: { damage: 2, hpmax: 5, oglysh: 5 }
       },
       {
+         imageSrc: `${basePath}imgs/characters/void.png`,
+         name: 'Войд',
+         stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
+         upg: 'hpmin',
+         yellow: { deff: 2, neoglysh: 5, oglysh: 5 }
+      },
+      {
          imageSrc: `${basePath}imgs/characters/ct.png`,
          name: 'Спецназовец',
          stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
@@ -272,7 +279,7 @@ const categories = {
       },
       {
          imageSrc: `${basePath}imgs/characters/template.png`,
-         name: 'Прочий кастом.скин',
+         name: 'Прочий кастом. скин',
          stats: { deff: 8, damage: 4, krit: 4, hpmin: 4, hpmax: 12, armourmax: 12 },
          upg: 'hpmin',
          yellow: {}
