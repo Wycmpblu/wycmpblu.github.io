@@ -163,6 +163,10 @@ function showPereshiv(slot) {
                name: 'trax',
                yellow: { damage: 2, hpmax: 7, armourmax: 7, otrazh: 1 }
             },
+            {
+               name: 'sunduk',
+               yellow: { damage: 1, deff: 1, krit: 1, oglysh: 1 }
+            },
          ]
          break;
       case 'armour':

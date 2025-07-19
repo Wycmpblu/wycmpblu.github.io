@@ -218,6 +218,13 @@ const categories = {
          yellow: {}
       },
       {
+         imageSrc: `${basePath}imgs/spine/bitcompton.png`,
+         name: 'Бейсбольная бита Compton',
+         stats: { deff: 4, oglysh: 5 },
+         upg: 'deff',
+         yellow: {}
+      },
+      {
          imageSrc: `${basePath}imgs/spine/energoshield.png`,
          name: 'Энергощит',
          stats: { deff: 4, hpmax: 10, opyan: 2 },
