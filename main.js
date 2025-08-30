@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <th>Цена</th>
                     <th>Кол-во</th>
                     <th>Продавец</th>
-                    <th>Лавка</th>
+                    <th>Маркет</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <td class="price">${lot.price.toLocaleString()}</td>
                 <td class="quantity">${lot.quantity} шт.</td>
                 <td class="seller">${lot.seller}</td>
-                <td class="marketplace">${lot.marketplaceId}</td>
+                <td class="marketplace">ID: ${lot.marketplaceId}</td>
             </tr>
         `;
       });
@@ -117,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
             ${tableHTML}
         </div>
     `;
+
+      // Показываем результаты
+      resultsDiv.style.display = 'block';
    }
 
    // Вспомогательные функции для показа/скрытия элементов
