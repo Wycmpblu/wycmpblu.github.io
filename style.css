@@ -84,7 +84,6 @@ h1 {
 
 .results-section {
    padding: 20px;
-
 }
 
 .stat-label {
@@ -202,7 +201,7 @@ h1 {
    }
 
    .results-section {
-      padding: 20px;
+      padding: 5px;
    }
 
    .search-info {
