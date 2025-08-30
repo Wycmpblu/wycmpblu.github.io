@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Поиск предметов в лавках ViceCity</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Маркетплейс ViceCity</h1>
+            <p class="subtitle">Найдите лучшие цены в лавках</p>
+        </header>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="itemSearch" placeholder="Введите название предмета" value="">
+                <button id="searchButton">Найти</button>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <!-- <div id="stats" class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalLots">0</div>
+                    <div class="stat-label">Всего лотов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="bestPrice">0</div>
+                    <div class="stat-label">Лучшая цена</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalQuantity">0</div>
+                    <div class="stat-label">Общее количество</div>
+                </div>
+            </div> -->
+
+            <div id="results"></div>
+            <div id="loading" class="loading">
+                ⏳ Загрузка данных...
+            </div>
+            <div id="error" class="error"></div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
