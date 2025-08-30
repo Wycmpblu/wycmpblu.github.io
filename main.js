@@ -79,48 +79,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Создаем таблицу
       let tableHTML = `
-            <table class="results-table">
-                <thead>
-                    <tr>
-                        <th>Предмет</th>
-                        <th>Цена</th>
-                        <th>Количество</th>
-                        <th>Продавец</th>
-                        <th>Лавка</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Предмет</th>
+                    <th>Цена</th>
+                    <th>Кол-во</th>
+                    <th>Продавец</th>
+                    <th>Лавка</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
 
       // Выводим все найденные лоты
       lots.forEach((lot, index) => {
          tableHTML += `
-                <tr>
-                    <td class="item-name">${lot.itemName}</td>
-                    <td class="price">${lot.price.toLocaleString()}</td>
-                    <td class="quantity">${lot.quantity} шт.</td>
-                    <td class="seller">${lot.seller}</td>
-                    <td class="marketplace">${lot.marketplaceId}</td>
-                </tr>
-            `;
+            <tr>
+                <td class="item-name">${lot.itemName}</td>
+                <td class="price">${lot.price.toLocaleString()}</td>
+                <td class="quantity">${lot.quantity} шт.</td>
+                <td class="seller">${lot.seller}</td>
+                <td class="marketplace">${lot.marketplaceId}</td>
+            </tr>
+        `;
       });
 
       tableHTML += '</tbody></table>';
 
-      // Добавляем информацию о поиске
+      // Добавляем информацию о поиске с оберткой для таблицы
       resultsDiv.innerHTML = `
-            <div class="search-info">
-                <h3>Найдено по запросу: "${searchTerm}"</h3>
-                <p>Найдено лотов: ${lots.length}</p>
-            </div>
+        <div class="search-info">
+            <h3>Найдено по запросу: "${searchTerm}"</h3>
+            <p>Найдено лотов: ${lots.length}</p>
+        </div>
+        <div class="table-container">
             ${tableHTML}
-        `;
-
-      // Показываем таблицу
-      const table = resultsDiv.querySelector('.results-table');
-      if (table) {
-         table.style.display = 'table';
-      }
+        </div>
+    `;
    }
 
    // Вспомогательные функции для показа/скрытия элементов

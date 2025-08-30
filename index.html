@@ -3,41 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔍 Поиск предметов в лавках ViceCity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🔍 Поиск предметов ViceCity</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1>🔍 Маркетплейс ViceCity</h1>
+            <h1>🔍 Поиск предметов</h1>
             <p class="subtitle">Найдите лучшие цены в лавках</p>
         </header>
 
         <section class="search-section">
             <div class="search-container">
-                <input type="text" id="itemSearch" placeholder="Введите название предмета" value="">
+                <input type="text" id="itemSearch" placeholder="Название предмета..." value="" enterkeyhint="search">
                 <button id="searchButton">Найти</button>
             </div>
         </section>
 
         <section class="results-section">
-            <!-- <div id="stats" class="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalLots">0</div>
-                    <div class="stat-label">Всего лотов</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="bestPrice">0</div>
-                    <div class="stat-label">Лучшая цена</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="totalQuantity">0</div>
-                    <div class="stat-label">Общее количество</div>
-                </div>
-            </div> -->
-
             <div id="results"></div>
             <div id="loading" class="loading">
                 ⏳ Загрузка данных...
@@ -46,7 +31,7 @@
         </section>
     </div>
 
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
