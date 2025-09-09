@@ -201,11 +201,11 @@ document.addEventListener('DOMContentLoaded', function () {
          nextResults.forEach(lot => {
             tableHTML += `
                <tr>
+                  <td class="server">${lot.serverName}</td>
                   <td class="item-name">${lot.itemName}</td>
                   <td class="price">${lot.price.toLocaleString()}</td>
                   <td class="quantity">${lot.quantity} шт.</td>
                   <td class="seller">${lot.seller}</td>
-                  <td class="server">${lot.serverName}</td>
                   <td class="marketplace">${lot.marketplaceId}</td>
                </tr>
             `;
@@ -276,4 +276,5 @@ document.addEventListener('DOMContentLoaded', function () {
          searchItemPrices(searchTerm);
       }
    });
+
 });
