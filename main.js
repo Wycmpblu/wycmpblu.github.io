@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       setTimeout(() => {
          displayResults();
-         loadMoreButton.textContent = $'Показать еще {RESULTS_PER_PAGE}';
+         loadMoreButton.textContent = 'Показать еще 30';
       }, 100);
    });
 
@@ -276,6 +276,4 @@ document.addEventListener('DOMContentLoaded', function () {
          searchItemPrices(searchTerm);
       }
    });
-
 });
-
