@@ -11,19 +11,58 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔍 Поиск предметов в лавках ViceCity</h1>
-            <p class="subtitle">Найдите лучшие цены</p>
+            <h1>🔍 Поиск предметов</h1>
+            <p class="subtitle">Найдите лучшие цены в лавках</p>
         </header>
 
         <section class="search-section">
             <div class="search-container">
                 <input type="text" id="itemSearch" placeholder="Название предмета..." value="" enterkeyhint="search">
+                <select id="serverFilter">
+                    <option value="-1">Все серверы</option>
+                    <option value="0">Vice-City</option>
+                    <option value="1">Phoenix</option>
+                    <option value="2">Tucson</option>
+                    <option value="3">Scottdale</option>
+                    <option value="4">Chandler</option>
+                    <option value="5">Brainburg</option>
+                    <option value="6">SaintRose</option>
+                    <option value="7">Mesa</option>
+                    <option value="8">Red-Rock</option>
+                    <option value="9">Yuma</option>
+                    <option value="10">Surprise</option>
+                    <option value="11">Prescott</option>
+                    <option value="12">Glendale</option>
+                    <option value="13">Kingman</option>
+                    <option value="14">Winslow</option>
+                    <option value="15">Payson</option>
+                    <option value="16">Gilbert</option>
+                    <option value="17">Show-Low</option>
+                    <option value="18">Casa-Grande</option>
+                    <option value="19">Page</option>
+                    <option value="20">SunCity</option>
+                    <option value="21">Queen-Creek</option>
+                    <option value="22">Sedona</option>
+                    <option value="23">Holiday</option>
+                    <option value="24">Wednesday</option>
+                    <option value="25">Yava</option>
+                    <option value="26">Faraway</option>
+                    <option value="27">Bumble Bee</option>
+                    <option value="28">Christmas</option>
+                    <option value="29">Mirage</option>
+                    <option value="30">Love</option>
+                    <option value="31">Drake</option>
+                    <option value="32">Space</option>
+                </select>
                 <button id="searchButton">Найти</button>
             </div>
         </section>
 
         <section class="results-section">
             <div id="results"></div>
+            <div id="loadMoreContainer" class="load-more-container">
+                <button id="loadMoreButton" class="load-more-button">Показать еще 20</button>
+            </div>
             <div id="loading" class="loading">
                 ⏳ Загрузка данных...
             </div>
@@ -34,6 +73,4 @@
     <script src="main.js"></script>
 </body>
 
-
 </html>
-

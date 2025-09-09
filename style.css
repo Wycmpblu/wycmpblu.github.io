@@ -48,11 +48,27 @@ h1 {
 .search-container {
    display: flex;
    gap: 15px;
-   max-width: 600px;
+   max-width: 800px;
    margin: 0 auto;
+   flex-wrap: wrap;
 }
 
 #itemSearch {
+   flex: 2;
+   padding: 15px 20px;
+   border: 2px solid #4facfe;
+   border-radius: 25px;
+   font-size: 16px;
+   outline: none;
+   transition: border-color 0.3s ease;
+   min-width: 200px;
+}
+
+#itemSearch:focus {
+   border-color: #00f2fe;
+}
+
+#serverFilter {
    flex: 1;
    padding: 15px 20px;
    border: 2px solid #4facfe;
@@ -60,13 +76,16 @@ h1 {
    font-size: 16px;
    outline: none;
    transition: border-color 0.3s ease;
+   background: white;
+   min-width: 150px;
 }
 
-#itemSearch:focus {
+#serverFilter:focus {
    border-color: #00f2fe;
 }
 
 #searchButton {
+   flex: 1;
    padding: 15px 30px;
    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
    color: white;
@@ -76,6 +95,7 @@ h1 {
    font-weight: bold;
    cursor: pointer;
    transition: transform 0.2s ease;
+   min-width: 100px;
 }
 
 #searchButton:hover {
@@ -86,9 +106,29 @@ h1 {
    padding: 20px;
 }
 
-.stat-label {
-   font-size: 0.9em;
-   opacity: 0.9;
+.search-info {
+   margin-bottom: 20px;
+   padding: 15px;
+   background: #e9ecef;
+   border-radius: 10px;
+}
+
+.search-info h3 {
+   color: #495057;
+   margin-bottom: 5px;
+}
+
+.search-info p {
+   color: #6c757d;
+   margin: 0;
+}
+
+.table-container {
+   width: 100%;
+   overflow-x: auto;
+   margin-top: 10px;
+   border-radius: 10px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .results-table {
@@ -96,9 +136,7 @@ h1 {
    border-collapse: collapse;
    background: white;
    min-width: 600px;
-   display: table;
 }
-
 
 .results-table th {
    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -109,7 +147,7 @@ h1 {
 }
 
 .results-table td {
-   padding: 15px;
+   padding: 12px 15px;
    border-bottom: 1px solid #e9ecef;
 }
 
@@ -119,6 +157,11 @@ h1 {
 
 .results-table tr:last-child td {
    border-bottom: none;
+}
+
+.item-name {
+   color: #495057;
+   font-weight: 500;
 }
 
 .price {
@@ -132,6 +175,11 @@ h1 {
 
 .seller {
    color: #495057;
+}
+
+.server {
+   color: #6c757d;
+   font-weight: 500;
 }
 
 .marketplace {
@@ -157,16 +205,42 @@ h1 {
    display: none;
 }
 
-.table-container {
-   width: 100%;
-   overflow-x: auto;
-   margin-top: 10px;
-   border-radius: 10px;
-   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.load-more-container {
+   text-align: center;
+   margin-top: 20px;
+   display: none;
 }
 
+.load-more-button {
+   padding: 15px 30px;
+   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+   color: white;
+   border: none;
+   border-radius: 25px;
+   font-size: 16px;
+   font-weight: bold;
+   cursor: pointer;
+   transition: transform 0.2s ease;
+}
 
+.load-more-button:hover {
+   transform: translateY(-2px);
+}
 
+.load-more-button:disabled {
+   background: #6c757d;
+   cursor: not-allowed;
+   transform: none;
+}
+
+.results-count {
+   text-align: center;
+   margin: 10px 0;
+   color: #6c757d;
+   font-size: 0.9em;
+}
+
+/* Для мобильных устройств */
 @media (max-width: 768px) {
    .container {
       margin: 10px;
@@ -190,25 +264,24 @@ h1 {
       gap: 10px;
    }
 
-   #itemSearch {
+   #itemSearch,
+   #serverFilter,
+   #searchButton {
+      width: 100%;
+      min-width: auto;
       padding: 12px 16px;
-      font-size: 16px;
-      /* Важно для iOS */
    }
 
-   #searchButton {
-      padding: 12px 20px;
+   #itemSearch {
+      font-size: 16px;
    }
 
    .results-section {
-      padding: 5px;
+      padding: 15px;
    }
 
    .search-info {
-      margin-bottom: 20px;
-      padding: 15px;
-      background: #e9ecef;
-      border-radius: 10px;
+      padding: 12px;
    }
 
    .search-info h3 {
@@ -226,6 +299,7 @@ h1 {
    }
 }
 
+/* Для очень маленьких экранов */
 @media (max-width: 480px) {
 
    .results-table th,
@@ -236,7 +310,16 @@ h1 {
 
    .price,
    .quantity,
-   .seller {
+   .seller,
+   .server {
       font-size: 11px;
+   }
+
+   .search-info h3 {
+      font-size: 1em;
+   }
+
+   .search-info p {
+      font-size: 0.9em;
    }
 }
