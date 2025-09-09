@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
    let currentSearchTerm = '';
    let currentSelectedServer = -1;
    let displayedCount = 0;
-   const RESULTS_PER_PAGE = 20;
+   const RESULTS_PER_PAGE = 30;
 
    // Скрываем все элементы при загрузке
    hideElement(loadingDiv);
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       setTimeout(() => {
          displayResults();
-         loadMoreButton.textContent = 'Показать еще 20';
+         loadMoreButton.textContent = $'Показать еще {RESULTS_PER_PAGE}';
       }, 100);
    });
 
@@ -278,3 +278,4 @@ document.addEventListener('DOMContentLoaded', function () {
    });
 
 });
+
