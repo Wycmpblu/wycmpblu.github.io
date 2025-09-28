@@ -21,7 +21,7 @@ export function showMarketplaceDetails(allMarketplacesData, lavkaId, username, s
    const finalUsername = username || marketplace.username || 'Неизвестно';
 
    const modalTitle = document.getElementById('modalTitle');
-   modalTitle.innerHTML = `${getLavkaModalHTML(lavkaId, finalUserStatus)} - ${finalUsername} (Сервер: ${getServerName(serverId)})`;
+   modalTitle.innerHTML = `${getLavkaModalHTML(lavkaId, finalUserStatus)} - ${finalUsername}`;
 
    // Вкладка продажи
    let sellHTML = `<p><strong>Владелец:</strong> ${finalUsername}</p>`;
@@ -147,6 +147,4 @@ export function setupModalHandlers() {
          document.getElementById(this.dataset.tab + 'Tab').classList.add('active');
       });
    });
-
 }
-
