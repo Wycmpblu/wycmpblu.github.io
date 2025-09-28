@@ -1,0 +1,57 @@
+import { getServerName, getIconHTML, getLavkaNumberHTML, showElement, hideElement } from './utils.js';
+
+// Функции для работы с лавками
+export function displayMarketplaces(allMarketplacesData, serverFilter, marketplacesSection, marketplacesList, showMarketplaceDetailsFn) {
+   const selectedServer = parseInt(serverFilter.value);
+   if (selectedServer === -1) {
+      hideElement(marketplacesSection);
+      return;
+   }
+
+   const filteredMarketplaces = allMarketplacesData.filter(lot => {
+      const lotServerId = lot.serverId !== undefined ? lot.serverId : -1;
+      return lotServerId === selectedServer;
+   });
+
+   if (filteredMarketplaces.length === 0) {
+      marketplacesList.innerHTML = '<div class="no-data">Лавки не найдены на сервере ' + getServerName(selectedServer) + '</div>';
+   } else {
+      let marketplacesHTML = '';
+      filteredMarketplaces.forEach(lot => {
+         marketplacesHTML += `
+            <div class="marketplace-card">
+               <div class="marketplace-header">
+                  <div class="marketplace-icon">
+                     ${getIconHTML(lot.userStatus)}
+                  </div>
+                  <div class="marketplace-info">
+                     <h3>${getLavkaNumberHTML(lot.LavkaUid, lot.userStatus)}</h3>
+                  </div>
+               </div>
+               <div class="marketplace-details">
+                  <div class="marketplace-detail">
+                     <span class="detail-label">Владелец:</span>
+                     <span class="detail-value">${lot.username || 'Неизвестно'}</span>
+                  </div>
+               </div>
+               <button class="view-marketplace-btn" data-lavka-id="${lot.LavkaUid}" data-username="${lot.username || 'Неизвестно'}" data-server-id="${lot.serverId}" data-user-status="${lot.userStatus || 0}">
+                  Посмотреть лавку
+               </button>
+            </div>
+         `;
+      });
+      marketplacesList.innerHTML = marketplacesHTML;
+
+      // Добавляем обработчики для кнопок
+      marketplacesList.querySelectorAll('.view-marketplace-btn').forEach(button => {
+         button.addEventListener('click', function () {
+            const lavkaId = this.getAttribute('data-lavka-id');
+            const username = this.getAttribute('data-username');
+            const serverId = this.getAttribute('data-server-id');
+            const userStatus = this.getAttribute('data-user-status');
+            showMarketplaceDetailsFn(lavkaId, username, serverId, userStatus);
+         });
+      });
+   }
+   showElement(marketplacesSection);
+}

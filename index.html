@@ -11,15 +11,15 @@
 <body>
     <div class="container">
         <header>
-            <h1>🔍 Поиск предметов</h1>
+            <h1><a href="">🔍 Поиск предметов</a></h1>
             <p class="subtitle">Найдите лучшие цены в лавках</p>
         </header>
 
         <section class="search-section">
             <div class="search-container">
-                <input type="text" id="itemSearch" placeholder="Название предмета..." value="" enterkeyhint="search">
+                <input type="text" id="itemSearch" placeholder="Название предмета..." enterkeyhint="search">
                 <select id="serverFilter">
-                    <option value="-1">Все серверы</option>
+                    <option value="-1">Выберите сервер</option>
                     <option value="0">Vice-City</option>
                     <option value="1">Phoenix</option>
                     <option value="2">Tucson</option>
@@ -54,23 +54,47 @@
                     <option value="31">Drake</option>
                     <option value="32">Space</option>
                 </select>
-                <button id="searchButton">Найти</button>
             </div>
+        </section>
+
+        <section class="marketplaces-section">
+            <div id="marketplacesList" class="marketplaces-list"></div>
         </section>
 
         <section class="results-section">
-            <div id="results"></div>
-            <div id="loadMoreContainer" class="load-more-container">
-                <button id="loadMoreButton" class="load-more-button">Показать еще 30</button>
+            <div class="results-tabs-container">
+                <div class="results-tabs">
+                    <button class="results-tab-button active" data-tab="sellResults">Продажа</button>
+                    <button class="results-tab-button" data-tab="buyResults">Скупка</button>
+                </div>
             </div>
-            <div id="loading" class="loading">
-                ⏳ Загрузка данных...
+            <div id="results">
+                <div id="sellResults" class="results-tab-content active"></div>
+                <div id="buyResults" class="results-tab-content"></div>
             </div>
+            <div id="loading" class="loading">⏳ Загрузка данных...</div>
             <div id="error" class="error"></div>
         </section>
+
+        <div id="marketplaceModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Состав лавки</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-tabs">
+                    <button class="tab-button active" data-tab="sell">Продажа</button>
+                    <button class="tab-button" data-tab="buy">Скупка</button>
+                </div>
+                <div class="modal-body">
+                    <div id="sellTab" class="tab-content active"></div>
+                    <div id="buyTab" class="tab-content"></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>
