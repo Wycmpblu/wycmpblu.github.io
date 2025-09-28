@@ -329,8 +329,8 @@ h1 {
 }
 
 .marketplace-icon img {
-   width: 64px !important;
-   height: 64px !important;
+   width: 72px !important;
+   height: 72px !important;
    object-fit: contain;
 }
 
@@ -633,8 +633,8 @@ h1 {
    }
 
    .marketplace-icon img {
-      width: 36px !important;
-      height: 36px !important;
+      width: 96px !important;
+      height: 96px !important;
    }
 }
 
@@ -677,6 +677,6 @@ h1 {
       padding: 12px;
       top: 5px;
       /* Меньший отступ на маленьких экранах */
-      border-radius: 12px 12px 0 0;
+      border-radius: 0 0 12px 12px;
    }
 }
