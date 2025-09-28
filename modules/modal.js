@@ -67,7 +67,7 @@ export function showMarketplaceDetails(allMarketplacesData, lavkaId, username, s
          sellHTML = '<div class="no-items">Нет валидных предметов на продаже</div>';
       }
    } else {
-      sellHTML += '<div class="no-items">Нет предметов на продажу или данные повреждены</div>';
+      sellHTML += '<div class="no-items">Нет предметов на продаже</div>';
    }
 
    // Вкладка скупки
@@ -147,4 +147,5 @@ export function setupModalHandlers() {
          document.getElementById(this.dataset.tab + 'Tab').classList.add('active');
       });
    });
+
 }
