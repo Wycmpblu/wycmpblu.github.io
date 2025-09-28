@@ -30,9 +30,8 @@ a:active {
    background: white;
    border-radius: 15px;
    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-   /* Убираем overflow: hidden чтобы sticky работал */
    position: relative;
-   /* Добавляем для контекста позиционирования */
+   /* Возвращаем для закругления углов */
 }
 
 header {
@@ -40,6 +39,7 @@ header {
    color: white;
    padding: 30px;
    text-align: center;
+   border-radius: 15px 15px 0 0;
 }
 
 h1 {
@@ -64,8 +64,10 @@ h1 {
    backdrop-filter: blur(10px);
    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
    margin: 0;
-   /* Убираем отрицательные margin */
+   border-radius: 0 0 15px 15px;
+   /* Закругляем верхние углы */
 }
+
 
 .search-container {
    display: flex;
@@ -547,8 +549,10 @@ h1 {
 
 /* 📱 Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
+
    .container {
-      margin-top: 100px;
+      margin: 10px;
+      border-radius: 15px;
    }
 
    header {
@@ -560,14 +564,20 @@ h1 {
    }
 
    .search-section {
+      padding: 15px;
       position: sticky;
-      top: 0;
+      top: 10px;
+      /* Отступ от верха экрана */
+      margin: 0;
+      border-radius: 0 0 15px 15px;
+      /* Сохраняем закругление */
    }
 
    .search-container {
       flex-direction: column;
       gap: 10px;
    }
+
 
    #itemSearch,
    #serverFilter,
@@ -631,17 +641,15 @@ h1 {
 /* Для очень маленьких экранов */
 @media (max-width: 480px) {
 
+   .container {
+      margin: 5px;
+      border-radius: 12px;
+   }
+
    .results-table th,
    .results-table td {
       padding: 8px 6px;
       font-size: 12px;
-   }
-
-   .price,
-   .quantity,
-   .seller,
-   .marketplace {
-      font-size: 11px;
    }
 
    .search-info h3 {
@@ -652,6 +660,13 @@ h1 {
       font-size: 0.9em;
    }
 
+   .price,
+   .quantity,
+   .seller,
+   .marketplace {
+      font-size: 11px;
+   }
+
    .modal-items-table th,
    .modal-items-table td {
       padding: 6px 8px;
@@ -659,7 +674,9 @@ h1 {
    }
 
    .search-section {
-      padding: 15px;
-      margin: -10px -10px 10px -10px;
+      padding: 12px;
+      top: 5px;
+      /* Меньший отступ на маленьких экранах */
+      border-radius: 12px 12px 0 0;
    }
 }
