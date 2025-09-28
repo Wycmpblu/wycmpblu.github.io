@@ -30,9 +30,9 @@ a:active {
    background: white;
    border-radius: 15px;
    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-   overflow: hidden;
-   margin-top: 120px;
-   /* Отступ равный высоте фиксированной панели */
+   /* Убираем overflow: hidden чтобы sticky работал */
+   position: relative;
+   /* Добавляем для контекста позиционирования */
 }
 
 header {
@@ -57,12 +57,14 @@ h1 {
    padding: 15px;
    background: #f8f9fa;
    border-bottom: 2px solid #e9ecef;
-   position: fixed;
+   position: sticky;
    top: 0;
-   left: 0;
-   right: 0;
    z-index: 100;
-   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+   background: rgba(248, 249, 250, 0.98);
+   backdrop-filter: blur(10px);
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+   margin: 0;
+   /* Убираем отрицательные margin */
 }
 
 .search-container {
@@ -124,8 +126,7 @@ h1 {
 
 .results-section,
 .marketplaces-section {
-   padding-top: 10px;
-   /* Уменьшаем отступ сверху так как панель фиксированная */
+   padding: 20px;
 }
 
 /* Стили для табличного вида результатов */
@@ -559,12 +560,8 @@ h1 {
    }
 
    .search-section {
-      background: #f8f9fa;
-      border-bottom: 2px solid #e9ecef;
-      position: fixed;
+      position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
    }
 
    .search-container {
@@ -582,7 +579,7 @@ h1 {
 
    .results-section,
    .marketplaces-section {
-      padding-top: 5px;
+      padding: 15px;
    }
 
    .marketplaces-list {
@@ -659,5 +656,10 @@ h1 {
    .modal-items-table td {
       padding: 6px 8px;
       font-size: 11px;
+   }
+
+   .search-section {
+      padding: 15px;
+      margin: -10px -10px 10px -10px;
    }
 }
