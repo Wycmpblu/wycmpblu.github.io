@@ -114,7 +114,7 @@ export function showMarketplaceDetails(allMarketplacesData, lavkaId, username, s
          buyHTML = '<div class="no-items">Нет валидных предметов на скупке</div>';
       }
    } else {
-      buyHTML += '<div class="no-items">Нет предметов на скупку</div>';
+      buyHTML += '<div class="no-items">Нет предметов на скупке</div>';
    }
 
    document.getElementById('sellTab').innerHTML = sellHTML;
@@ -149,3 +149,4 @@ export function setupModalHandlers() {
    });
 
 }
+
