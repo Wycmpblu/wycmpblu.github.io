@@ -6,7 +6,7 @@ export async function loadMarketplacesData(loadingDiv, errorDiv) {
    hideElement(errorDiv);
 
    try {
-      const response = await fetch('https://raw.githubusercontent.com/FREYM1337/freym1337.github.io/refs/heads/main/data/markets.json');
+      const response = await fetch('https://raw.githubusercontent.com/FREYM1337/freym1337.github.io/main/data/markets.json');
       if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
       return await response.json();
    } catch (error) {
