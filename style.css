@@ -30,9 +30,9 @@ a:active {
    background: white;
    border-radius: 15px;
    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-   /* Убираем overflow: hidden чтобы sticky работал */
+   /* РЈР±РёСЂР°РµРј overflow: hidden С‡С‚РѕР±С‹ sticky СЂР°Р±РѕС‚Р°Р» */
    position: relative;
-   /* Добавляем для контекста позиционирования */
+   /* Р”РѕР±Р°РІР»СЏРµРј РґР»СЏ РєРѕРЅС‚РµРєСЃС‚Р° РїРѕР·РёС†РёРѕРЅРёСЂРѕРІР°РЅРёСЏ */
 }
 
 header {
@@ -64,7 +64,7 @@ h1 {
    backdrop-filter: blur(10px);
    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
    margin: 0;
-   /* Убираем отрицательные margin */
+   /* РЈР±РёСЂР°РµРј РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ margin */
 }
 
 .search-container {
@@ -129,7 +129,7 @@ h1 {
    padding: 20px;
 }
 
-/* Стили для табличного вида результатов */
+/* РЎС‚РёР»Рё РґР»СЏ С‚Р°Р±Р»РёС‡РЅРѕРіРѕ РІРёРґР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ */
 .search-info {
    margin-bottom: 20px;
    padding: 15px;
@@ -240,7 +240,7 @@ h1 {
    display: none;
 }
 
-/* Вкладки */
+/* Р’РєР»Р°РґРєРё */
 .results-tabs-container {
    width: 100%;
    background: #f8f9fa;
@@ -295,7 +295,7 @@ h1 {
    font-style: italic;
 }
 
-/* Секция лавок */
+/* РЎРµРєС†РёСЏ Р»Р°РІРѕРє */
 .marketplaces-section {
    padding: 20px;
    display: none;
@@ -374,7 +374,7 @@ h1 {
    transform: translateY(-1px);
 }
 
-/* Модальное окно */
+/* РњРѕРґР°Р»СЊРЅРѕРµ РѕРєРЅРѕ */
 .modal {
    display: none;
    position: fixed;
@@ -489,8 +489,8 @@ h1 {
    font-style: italic;
 }
 
-/* Стили для премиум лавок */
-/* Стили для премиум лавок */
+/* РЎС‚РёР»Рё РґР»СЏ РїСЂРµРјРёСѓРј Р»Р°РІРѕРє */
+/* РЎС‚РёР»Рё РґР»СЏ РїСЂРµРјРёСѓРј Р»Р°РІРѕРє */
 .premium-lavka {
    background: linear-gradient(45deg, #c300ff, #E6BE8A, #D4AF37, #FFD700, #E6BE8A);
    background-size: 400% 400%;
@@ -545,7 +545,7 @@ h1 {
    font-size: 1.3em;
 }
 
-/* ?? Адаптивность для мобильных устройств */
+/* рџ“± РђРґР°РїС‚РёРІРЅРѕСЃС‚СЊ РґР»СЏ РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІ */
 @media (max-width: 768px) {
    .container {
       margin-top: 100px;
@@ -628,7 +628,7 @@ h1 {
    }
 }
 
-/* Для очень маленьких экранов */
+/* Р”Р»СЏ РѕС‡РµРЅСЊ РјР°Р»РµРЅСЊРєРёС… СЌРєСЂР°РЅРѕРІ */
 @media (max-width: 480px) {
 
    .results-table th,
