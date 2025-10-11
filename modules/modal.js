@@ -23,106 +23,96 @@ export function showMarketplaceDetails(allMarketplacesData, lavkaId, username, s
    const modalTitle = document.getElementById('modalTitle');
    modalTitle.innerHTML = `${getLavkaModalHTML(lavkaId, finalUserStatus)} - ${finalUsername}`;
 
-   // Вкладка продажи
-   let sellHTML = `<p><strong>Владелец:</strong> ${finalUsername}</p>`;
-   sellHTML += `<p><strong>Предметы на продаже:</strong> ${marketplace.items_sell ? marketplace.items_sell.length : 0}</p>`;
+   // Контейнеры вкладок
+   const sellTab = document.getElementById('sellTab');
+   const buyTab = document.getElementById('buyTab');
 
-   if (marketplace.items_sell && Array.isArray(marketplace.items_sell) &&
-      marketplace.price_sell && Array.isArray(marketplace.price_sell) &&
-      marketplace.items_sell.length > 0) {
+   // Вспомогательная функция для отрисовки таблицы
+   function renderItems(type, sortBy = 'name') {
+      const items = type === 'sell' ? marketplace.items_sell : marketplace.items_buy;
+      const prices = type === 'sell' ? marketplace.price_sell : marketplace.price_buy;
+      const counts = type === 'sell' ? marketplace.count_sell : marketplace.count_buy;
 
-      sellHTML += `
-             <table class="modal-items-table">
-                 <thead>
-                     <tr>
-                         <th>№</th>
-                         <th>Предмет</th>
-                         <th>Цена</th>
-                         <th>Количество</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-         `;
+      if (!items || !Array.isArray(items) || !prices || !Array.isArray(prices) || items.length === 0) {
+         return '<div class="no-items">Нет предметов</div>';
+      }
 
-      let validSellItems = 0;
-      marketplace.items_sell.forEach((item, index) => {
-         if (item && marketplace.price_sell[index] !== undefined && marketplace.price_sell[index] !== null) {
-            const price = marketplace.price_sell[index];
-            const quantity = marketplace.count_sell && marketplace.count_sell[index] !== undefined ? marketplace.count_sell[index] : 1;
-            if (price >= 0 && quantity > 0) {
-               sellHTML += `
-                         <tr>
-                             <td>${validSellItems + 1}</td>
-                             <td>${item}</td>
-                             <td>${price.toLocaleString()}$</td>
-                             <td>${quantity} шт.</td>
-                         </tr>
-                     `;
-               validSellItems++;
-            }
+      // Собираем валидные предметы
+      const data = [];
+      items.forEach((item, i) => {
+         const price = prices[i];
+         const quantity = counts && counts[i] !== undefined ? counts[i] : 1;
+         if (item && price >= 0 && quantity > 0) {
+            data.push({ item, price, quantity });
          }
       });
-      sellHTML += '</tbody></table>';
-      if (validSellItems === 0) {
-         sellHTML = '<div class="no-items">Нет валидных предметов на продаже</div>';
+
+      // Сортировка
+      if (sortBy === 'price') {
+         data.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'name') {
+         data.sort((a, b) => a.item.localeCompare(b.item));
       }
-   } else {
-      sellHTML += '<div class="no-items">Нет предметов на продаже</div>';
-   }
 
-   // Вкладка скупки
-   let buyHTML = `<p><strong>Владелец:</strong> ${finalUsername}</p>`;
-   buyHTML += `<p><strong>Предметы на скупке:</strong> ${marketplace.items_buy && Array.isArray(marketplace.items_buy) ? marketplace.items_buy.length : 0}</p>`;
+      if (data.length === 0) return '<div class="no-items">Нет валидных предметов</div>';
 
-   if (marketplace.items_buy && Array.isArray(marketplace.items_buy) &&
-      marketplace.price_buy && Array.isArray(marketplace.price_buy) &&
-      marketplace.items_buy.length > 0) {
+      let html = `
+         <div class="sort-controls">
+            <label>Сортировать по:</label>
+            <select id="${type}SortSelect">
+               <option value="name" ${sortBy === 'name' ? 'selected' : ''}>Названию</option>
+               <option value="price" ${sortBy === 'price' ? 'selected' : ''}>Цене</option>
+            </select>
+         </div>
+         <table class="modal-items-table">
+             <thead>
+                 <tr>
+                     <th>№</th>
+                     <th>Предмет</th>
+                     <th>Цена</th>
+                     <th>Количество</th>
+                 </tr>
+             </thead>
+             <tbody>
+      `;
 
-      buyHTML += `
-             <table class="modal-items-table">
-                 <thead>
-                     <tr>
-                         <th>№</th>
-                         <th>Предмет</th>
-                         <th>Цена</th>
-                         <th>Количество</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-         `;
-
-      let validBuyItems = 0;
-      marketplace.items_buy.forEach((item, index) => {
-         if (item && marketplace.price_buy[index] !== undefined && marketplace.price_buy[index] !== null) {
-            const price = marketplace.price_buy[index];
-            const quantity = marketplace.count_buy && marketplace.count_buy[index] !== undefined ? marketplace.count_buy[index] : 1;
-            if (price >= 0 && quantity > 0) {
-               buyHTML += `
-                         <tr>
-                             <td>${validBuyItems + 1}</td>
-                             <td>${item}</td>
-                             <td>${price.toLocaleString()}$</td>
-                             <td>${quantity} шт.</td>
-                         </tr>
-                     `;
-               validBuyItems++;
-            }
-         }
+      data.forEach((d, index) => {
+         html += `
+             <tr>
+                 <td>${index + 1}</td>
+                 <td>${d.item}</td>
+                 <td style="font-weight: bold;
+   color: #28a745 !important;">${d.price.toLocaleString()}$</td>
+                 <td>${d.quantity} шт.</td>
+             </tr>`;
       });
-      buyHTML += '</tbody></table>';
-      if (validBuyItems === 0) {
-         buyHTML = '<div class="no-items">Нет валидных предметов на скупке</div>';
-      }
-   } else {
-      buyHTML += '<div class="no-items">Нет предметов на скупке</div>';
+
+      html += '</tbody></table>';
+      return html;
    }
 
-   document.getElementById('sellTab').innerHTML = sellHTML;
-   document.getElementById('buyTab').innerHTML = buyHTML;
+   // Начальная отрисовка
+   sellTab.innerHTML = renderItems('sell');
+   buyTab.innerHTML = renderItems('buy');
 
+   // Навешиваем обработчики сортировки
+   sellTab.addEventListener('change', (e) => {
+      if (e.target.id === 'sellSortSelect') {
+         sellTab.innerHTML = renderItems('sell', e.target.value);
+      }
+   });
+
+   buyTab.addEventListener('change', (e) => {
+      if (e.target.id === 'buySortSelect') {
+         buyTab.innerHTML = renderItems('buy', e.target.value);
+      }
+   });
+
+   // Показываем модалку
    const marketplaceModal = document.getElementById('marketplaceModal');
    showElement(marketplaceModal);
 }
+
 
 export function setupModalHandlers() {
    const closeModal = document.querySelector('.close');
