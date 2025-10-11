@@ -13,9 +13,24 @@ export function displayMarketplaces(allMarketplacesData, serverFilter, marketpla
       return lotServerId === selectedServer;
    });
 
+   // Удаляем старый блок с количеством, если он уже был
+   let existingCountBlock = marketplacesSection.querySelector('.marketplaces-count');
+   if (existingCountBlock) {
+      existingCountBlock.remove();
+   }
+
    if (filteredMarketplaces.length === 0) {
       marketplacesList.innerHTML = '<div class="no-data">Лавки не найдены на сервере ' + getServerName(selectedServer) + '</div>';
    } else {
+      // Добавляем блок с количеством ПЕРЕД списком лавок
+      const countBlock = document.createElement('div');
+      countBlock.className = 'marketplaces-count';
+      countBlock.innerHTML = `
+         Найдено лавок: <strong>${filteredMarketplaces.length}</strong>
+      `;
+      marketplacesSection.insertBefore(countBlock, marketplacesList);
+
+      // Заполняем список лавок
       let marketplacesHTML = '';
       filteredMarketplaces.forEach(lot => {
          marketplacesHTML += `
@@ -34,12 +49,17 @@ export function displayMarketplaces(allMarketplacesData, serverFilter, marketpla
                      <span class="detail-value">${lot.username || 'Неизвестно'}</span>
                   </div>
                </div>
-               <button class="view-marketplace-btn" data-lavka-id="${lot.LavkaUid}" data-username="${lot.username || 'Неизвестно'}" data-server-id="${lot.serverId}" data-user-status="${lot.userStatus || 0}">
+               <button class="view-marketplace-btn" 
+                       data-lavka-id="${lot.LavkaUid}" 
+                       data-username="${lot.username || 'Неизвестно'}" 
+                       data-server-id="${lot.serverId}" 
+                       data-user-status="${lot.userStatus || 0}">
                   Посмотреть лавку
                </button>
             </div>
          `;
       });
+
       marketplacesList.innerHTML = marketplacesHTML;
 
       // Добавляем обработчики для кнопок
@@ -53,5 +73,6 @@ export function displayMarketplaces(allMarketplacesData, serverFilter, marketpla
          });
       });
    }
+
    showElement(marketplacesSection);
 }
