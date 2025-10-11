@@ -27,7 +27,7 @@ a:active {
 .container {
    max-width: 1200px;
    margin: 0 auto;
-   background: white;
+   background: none;
    border-radius: 15px;
    position: relative;
 }
