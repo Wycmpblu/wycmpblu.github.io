@@ -205,15 +205,18 @@ h1 {
    color: #495057;
 }
 
-#sellTab {
+#sellTab,
+#buyTab {
    color: #dadada;
 }
 
-#sellTab th {
+#sellTab th,
+#buyTab th {
    background: #1d1d1d;
 }
 
-#sellTab tr:hover {
+#sellTab tr:hover,
+#buyTab tr:hover {
    background: #535353;
 }
 
