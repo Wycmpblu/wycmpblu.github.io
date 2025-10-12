@@ -40,7 +40,7 @@ export function displayMarketplaces(allMarketplacesData, serverFilter, marketpla
                      ${getIconHTML(lot.userStatus)}
                   </div>
                   <div class="marketplace-info">
-                     <h3>${getLavkaNumberHTML(lot.LavkaUid, lot.userStatus)}</h3>
+                     <h3> ${getLavkaNumberHTML("Лавка №" + lot.LavkaUid, lot.userStatus)}</h3>
                   </div>
                </div>
                <div class="marketplace-details">

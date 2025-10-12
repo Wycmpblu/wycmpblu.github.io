@@ -28,9 +28,9 @@ export function createElementFromHTML(htmlString) {
 
 export function getLavkaNumberHTML(lavkaId, userStatus) {
    if (userStatus === 2) {
-      return `<span class="premium-lavka">№${lavkaId || 'N/A'}</span>`;
+      return `<span class="premium-lavka">${lavkaId || 'N/A'}</span>`;
    }
-   return `№${lavkaId || 'N/A'}`;
+   return `${lavkaId || 'N/A'}`;
 }
 
 export function getIconHTML(userStatus) {
@@ -45,5 +45,5 @@ export function getLavkaModalHTML(lavkaId, userStatus) {
    if (userStatus === 2) {
       return `<span class="modal-premium-lavka">Лавка №${lavkaId}</span>`;
    }
-   return `Лавка №${lavkaId}`;
+   return `Лавка ${lavkaId}`;
 }
