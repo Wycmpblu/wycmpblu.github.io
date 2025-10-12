@@ -2,8 +2,23 @@ import { SERVER_NAMES } from './config.js';
 
 // Вспомогательные функции
 export function getServerName(serverId) {
-   return SERVER_NAMES[serverId] || `Сервер ${serverId}`;
+   const servers = [
+      "Vice-City", "Phoenix", "Tucson", "Scottdale", "Chandler", "Brainburg",
+      "SaintRose", "Mesa", "Red-Rock", "Yuma", "Surprise", "Prescott",
+      "Glendale", "Kingman", "Winslow", "Payson", "Gilbert", "Show-Low",
+      "Casa-Grande", "Page", "SunCity", "Queen-Creek", "Sedona", "Holiday",
+      "Wednesday", "Yava", "Faraway", "Bumble Bee", "Christmas", "Mirage",
+      "Love", "Drake", "Space"
+   ];
+
+   // защита от undefined / NaN / -1
+   const id = Number.isFinite(serverId) && serverId >= 0 && serverId < servers.length
+      ? serverId
+      : null;
+
+   return id !== null ? servers[id] : "не выбран";
 }
+
 
 export function showElement(element) {
    if (element) element.style.display = 'block';

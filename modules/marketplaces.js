@@ -2,7 +2,10 @@ import { getServerName, getIconHTML, getLavkaNumberHTML, showElement, hideElemen
 
 // Функции для работы с лавками
 export function displayMarketplaces(allMarketplacesData, serverFilter, marketplacesSection, marketplacesList, showMarketplaceDetailsFn) {
-   const selectedServer = parseInt(serverFilter.value);
+   // ✅ Безопасное чтение serverFilter.value
+   const rawValue = serverFilter?.value ?? "-1";
+   const selectedServer = Number.isNaN(Number(rawValue)) ? -1 : parseInt(rawValue);
+
    if (selectedServer === -1) {
       hideElement(marketplacesSection);
       return;
@@ -20,7 +23,9 @@ export function displayMarketplaces(allMarketplacesData, serverFilter, marketpla
    }
 
    if (filteredMarketplaces.length === 0) {
-      marketplacesList.innerHTML = '<div class="no-data">Лавки не найдены на сервере ' + getServerName(selectedServer) + '</div>';
+      // ✅ Показываем понятный текст без NaN
+      const serverName = selectedServer === -1 ? 'не выбран' : getServerName(selectedServer);
+      marketplacesList.innerHTML = `<div class="no-data">Лавки не найдены на сервере ${serverName}</div>`;
    } else {
       // Добавляем блок с количеством ПЕРЕД списком лавок
       const countBlock = document.createElement('div');
@@ -40,7 +45,7 @@ export function displayMarketplaces(allMarketplacesData, serverFilter, marketpla
                      ${getIconHTML(lot.userStatus)}
                   </div>
                   <div class="marketplace-info">
-                     <h3> ${getLavkaNumberHTML("Лавка №" + lot.LavkaUid, lot.userStatus)}</h3>
+                     <h3>${getLavkaNumberHTML("Лавка №" + lot.LavkaUid, lot.userStatus)}</h3>
                   </div>
                </div>
                <div class="marketplace-details">
