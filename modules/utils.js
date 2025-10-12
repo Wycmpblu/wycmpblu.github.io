@@ -49,11 +49,15 @@ export function getLavkaNumberHTML(lavkaId, userStatus) {
 }
 
 export function getIconHTML(userStatus) {
-   const iconSize = '24px';
+   const iconClass = 'fa-solid fa-store';
+   const iconHTML = `<i class="${iconClass}"></i>`;
+
    if (userStatus === 2) {
-      return `<img src="/src/images/shop-premium.svg" alt="Премиум лавка" title="Премиум лавка" class="premium-icon" style="width: ${iconSize}; height: ${iconSize}">`;
+      // Оборачиваем в <span>, чтобы градиент применился к тексту
+      return `<span class="premium-icon">${iconHTML}</span>`;
    }
-   return `<img src="/src/images/shop.svg" alt="Лавка" title="Лавка" style="width: ${iconSize}; height: ${iconSize}">`;
+
+   return iconHTML;
 }
 
 export function getLavkaModalHTML(lavkaId, userStatus) {
