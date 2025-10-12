@@ -133,66 +133,142 @@ h1 {
    color: white;
 }
 
-.select-wrapper {
+/* === 🎯 Кастомный выпадающий список === */
+.custom-select {
    position: relative;
-   display: inline-flex;
-   align-items: center;
-   flex: 1;
+   width: 220px;
+   user-select: none;
+   min-width: 200px;
+   z-index: 200;
 }
 
-#serverFilter {
-   appearance: none;
-   -webkit-appearance: none;
-   -moz-appearance: none;
-
-   flex: 1;
-   padding: 15px 50px 15px 20px;
-
-   border: 2px solid var(--med-gray);
-   border-radius: 10px;
-   font-size: 15px;
-   font-weight: bold;
-   outline: none;
-   background-color: var(--dark-gray);
+/* Выбранный элемент */
+.select-selected {
+   background: var(--dark-gray);
    color: white;
-   min-width: 150px;
+   padding: 14px 45px 14px 20px;
+   border-radius: 10px;
+   border: 2px solid var(--med-gray);
    cursor: pointer;
-   transition: border-color 0.3s ease;
-   line-height: 1.2;
-
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   transition: border-color 0.3s ease, color 0.3s ease;
+   position: relative;
 }
 
-/* убираем стандартную стрелку */
-#serverFilter::-ms-expand {
-   display: none;
-}
-
-/* иконка Font Awesome */
-.select-wrapper i.fa-chevron-down {
-   position: absolute;
-   right: 18px;
-   top: 50%;
-   transform: translateY(-50%);
-   pointer-events: none;
-   color: var(--med-gray);
-   font-size: 16px;
-   transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* при фокусе */
-.select-wrapper:focus-within #serverFilter {
+.select-selected:hover {
    border-color: var(--red-color);
 }
 
-.select-wrapper:focus-within i.fa-chevron-down {
-   color: var(--red-color);
-   transform: translateY(-50%) rotate(180deg);
+/* Иконка стрелки */
+.select-selected i {
+   position: absolute;
+   right: 15px;
+   font-size: 14px;
+   color: var(--light-gray);
+   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.select-wrapper:hover i.fa-chevron-down {
+.select-selected:hover i {
    color: var(--red-color);
 }
 
+/* Анимация поворота стрелки при открытии */
+.custom-select.open .select-selected i {
+   transform: rotate(180deg);
+   color: var(--red-color);
+}
+
+/* Выпадающий список */
+.select-items {
+   position: absolute;
+   background: var(--dark-gray);
+   border-radius: 10px;
+   width: 100%;
+   top: 110%;
+   left: 0;
+   display: none;
+   z-index: 300;
+   max-height: 220px;
+   overflow-y: auto;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+   border: 2px solid var(--med-gray);
+   scrollbar-width: none;
+   -ms-overflow-style: none;
+}
+
+.select-overlay {
+   position: fixed;
+   inset: 0;
+   background: rgba(0, 0, 0, 0.7);
+   z-index: 5;
+   backdrop-filter: blur(5px);
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 0.2s ease;
+}
+
+.custom-select.open+.select-overlay {
+   opacity: 1;
+   pointer-events: all;
+}
+
+.custom-select.open .select-items {
+   display: block;
+   animation: fadeIn 0.15s ease;
+}
+
+/* Элементы списка */
+.select-items div {
+   padding: 12px 20px;
+   cursor: pointer;
+   transition: background 0.2s ease, color 0.2s ease;
+   color: white;
+   font-size: 15px;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Последнему элементу убираем границу */
+.select-items div:last-child {
+   border-bottom: none;
+}
+
+/* Ховер по пункту */
+.select-items div:hover {
+   background: var(--red-color);
+   color: #fff;
+}
+
+/* Скругления на краях при наведении */
+.select-items div:first-child:hover {
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+
+.select-items div:last-child:hover {
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+}
+
+/* Скрываем скроллбар */
+.select-items::-webkit-scrollbar {
+   width: 0;
+   height: 0;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(-5px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
 
 #serverFilter:hover,
 #serverFilter:focus {
@@ -304,13 +380,13 @@ h1 {
 }
 
 .sort-controls {
-   display: block;
+   display: flex;
    padding: 10px;
    border-radius: 10px;
    background: var(--main-color);
    align-items: center;
    gap: 8px;
-   margin-bottom: 8px;
+   margin-bottom: 20px;
 }
 
 .sort-controls label {
@@ -319,10 +395,11 @@ h1 {
 }
 
 .sort-controls select {
-   padding: 4px 6px;
-   border-radius: 6px;
+   padding: 8px;
+   border-radius: 10px;
    border: 2px solid var(--red-color);
-   background-color: #fff;
+   background-color: var(--dark-gray);
+   color: var(--light-gray);
 }
 
 .loading {
@@ -349,7 +426,6 @@ h1 {
    background: #aaaaaa;
    border-bottom: 1px solid #e9ecef;
    margin-bottom: 20px;
-   border-radius: 10px 10px 0 0;
 }
 
 .results-tabs {
@@ -707,10 +783,9 @@ h1 {
       min-width: auto;
    }
 
-   #serverFilter {
+   .custom-select {
       width: 100%;
       min-width: auto;
-      padding: 12px 16px;
    }
 
    .results-section,
