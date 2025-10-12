@@ -209,17 +209,22 @@ h1 {
 .search-info {
    margin-bottom: 20px;
    padding: 15px;
-   background: #e9ecef;
+   background: var(--dark-gray);
    border-radius: 10px;
 }
 
 .search-info h3 {
-   color: #495057;
+   color: var(--light-gray);
    margin-bottom: 5px;
 }
 
 .search-info p {
-   color: #6c757d;
+   color: var(--light-gray);
+   margin: 0;
+}
+
+.search-info strong {
+   color: var(--red-color);
    margin: 0;
 }
 
@@ -408,7 +413,7 @@ h1 {
 }
 
 .marketplace-card {
-   background: var(--main-color);
+   background: var(--dark-gray);
    border-radius: 10px;
    padding: 20px;
    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -449,17 +454,17 @@ h1 {
 
 .marketplaces-count {
    display: block;
+   color: var(--light-gray);
    align-items: left;
-   ;
    margin-bottom: 1rem;
    padding: 0.75rem 1rem;
-   background-color: #f7f9fc;
+   background-color: var(--dark-gray);
    border-radius: 10px;
    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .marketplaces-count strong {
-   color: #222222;
+   color: var(--red-color);
 }
 
 .detail-label {
@@ -500,6 +505,7 @@ h1 {
    width: 100%;
    height: 100%;
    background-color: rgba(0, 0, 0, 0.7);
+   backdrop-filter: blur(5px);
 }
 
 .modal-content {
@@ -527,6 +533,10 @@ h1 {
    font-size: 28px;
    font-weight: bold;
    cursor: pointer;
+}
+
+.close:hover {
+   color: var(--red-color);
 }
 
 .modal-body {
