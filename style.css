@@ -802,12 +802,12 @@ h1 {
    .modal-items-table th,
    .modal-items-table td {
       padding: 8px 10px;
-      font-size: 12px;
+      font-size: 14px;
    }
 
    .view-lavka-btn {
       padding: 6px 10px;
-      font-size: 11px;
+      font-size: 12px;
    }
 
    .marketplace-icon i {
@@ -857,4 +857,5 @@ h1 {
       /* Меньший отступ на маленьких экранах */
       border-radius: 0 0 12px 12px;
    }
+
 }
