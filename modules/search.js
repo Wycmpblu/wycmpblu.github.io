@@ -93,8 +93,8 @@ export function displaySearchResults(
    const searchInfoHTML = `
       <div class="search-info">
          <h3>Найдено по запросу: "${searchTerm}"${serverText}</h3>
-         <p><b>Предметов на продаже:</b> ${sellData.length}</p>
-         <p><b>Предметов на скупке:</b> ${buyData.length}</p>
+         <p>Предметов на продаже: <strong>${sellData.length}</strong></p>
+         <p>Предметов на скупке: <strong>${buyData.length}</strong></p>
       </div>
    `;
 
