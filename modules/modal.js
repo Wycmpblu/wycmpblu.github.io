@@ -111,6 +111,8 @@ export function showMarketplaceDetails(allMarketplacesData, lavkaId, username, s
    // Показываем модалку
    const marketplaceModal = document.getElementById('marketplaceModal');
    showElement(marketplaceModal);
+
+   document.body.style.overflow = 'hidden';
 }
 
 
@@ -118,13 +120,17 @@ export function setupModalHandlers() {
    const closeModal = document.querySelector('.close');
    const marketplaceModal = document.getElementById('marketplaceModal');
 
-   closeModal.addEventListener('click', () => {
+   const closeHandler = () => {
       hideElement(marketplaceModal);
-   });
+      // ✅ Возвращаем прокрутку страницы
+      document.body.style.overflow = '';
+   };
+
+   closeModal.addEventListener('click', closeHandler);
 
    window.addEventListener('click', (e) => {
-      if (e.target === marketplaceModal) {
-         hideElement(marketplaceModal);
+      if (e.target.closest('.modal-content') === null && e.target.closest('#marketplaceModal')) {
+         closeHandler();
       }
    });
 
